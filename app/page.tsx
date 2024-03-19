@@ -1,3 +1,11 @@
-export default function Home(): JSX.Element {
-  return <main>Hello World</main>;
+import { getAllCharacters } from '@/src/api/endpoints';
+
+export default async function Home(): Promise<JSX.Element> {
+  const characters = await getAllCharacters();
+
+  return (
+    <main>
+      <div>{JSON.stringify(characters)};</div>
+    </main>
+  );
 }

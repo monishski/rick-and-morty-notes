@@ -1,3 +1,11 @@
+:root {
+  --rick-and-morty-theme-slate-5xlight: #f8fafc;
+  --rick-and-morty-theme-slate-4xlight: #f1f5f9;
+  --rick-and-morty-theme-slate-3xlight: #e2e8f0;
+
+  --rick-and-morty-theme-gray-dark: #374151;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,7 +15,9 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  background-color: var(--rick-and-morty-theme-slate-4xlight);
+  color: var(--rick-and-morty-theme-gray-dark);
 }
 
 a {

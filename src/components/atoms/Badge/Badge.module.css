@@ -1,0 +1,33 @@
+.badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--rick-and-morty-theme-slate-3xlight);
+  border-radius: 4px;
+  padding: 2px 6px 2px 6px;
+  height: min-content;
+}
+
+.badge div {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.badge h4 {
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  max-width: 96px;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.badge h6 {
+  font-size: 12px;
+  font-weight: 300;
+  overflow: hidden;
+  text-wrap: nowrap;
+}

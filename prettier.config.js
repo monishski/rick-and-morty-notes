@@ -1,5 +1,5 @@
 /** @type {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} */
-const config = {
+module.exports = {
   endOfLine: "lf",
   semi: true,
   singleQuote: true,
@@ -28,7 +28,5 @@ const config = {
   importOrderCombineTypeAndValueImports: false,
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
-  plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  plugins: ["@ianvs/prettier-plugin-sort-imports",],
 };
-
-export default config;

@@ -4,14 +4,19 @@ import type { InfiniteData, UseInfiniteQueryResult } from '@tanstack/react-query
 import type { Character, Pagination } from '../../types';
 import { QUERY_KEY } from './config';
 import { getAllCharacters } from './method';
+import type { GetAllCharactersQuery } from './types';
+
+type UseGetAllCharactersQueryArgs = Pick<GetAllCharactersQuery, 'name'>;
 
 type UseGetAllCharactersQueryReturnType = UseInfiniteQueryResult<InfiniteData<Pagination<Character>>>;
 
-export const useGetAllCharactersQuery = (): UseGetAllCharactersQueryReturnType => {
+export const useGetAllCharactersQuery = ({
+  name,
+}: UseGetAllCharactersQueryArgs): UseGetAllCharactersQueryReturnType => {
   return useInfiniteQuery<Pagination<Character>>({
-    queryKey: [QUERY_KEY],
+    queryKey: [QUERY_KEY, name],
     queryFn: ({ pageParam }) => {
-      return getAllCharacters({ page: pageParam as number });
+      return getAllCharacters({ page: pageParam as number, name });
     },
     getNextPageParam: (lastPage) => {
       const nextPageUrl = lastPage.info.next;

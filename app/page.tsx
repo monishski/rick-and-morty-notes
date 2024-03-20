@@ -1,12 +1,20 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useGetAllCharactersQuery } from '@/api/endpoints/get_all_characters';
 import { Grid } from '@/components/atoms';
 import { Card, CardSkeleton } from '@/components/molecules';
-import { useObserver } from '@/hooks';
+import { useDebounce, useObserver } from '@/hooks';
 
 export default function Home(): JSX.Element {
-  const { data, isFetching, isLoading, isError, isSuccess, fetchNextPage, hasNextPage } = useGetAllCharactersQuery();
+  const [searchQuery, setSearchQuery] = useState('');
+  //REF: https://github.com/TanStack/query/issues/293#issuecomment-1308442417
+  const debouncedSearchQuery = useDebounce({ value: searchQuery, delay: 200 });
+
+  const { data, isFetching, isLoading, isError, isSuccess, fetchNextPage, hasNextPage } = useGetAllCharactersQuery({
+    name: debouncedSearchQuery ? debouncedSearchQuery.trim() : undefined,
+  });
 
   const { ref: targetRef } = useObserver<HTMLDivElement>({ enabled: hasNextPage, cb: fetchNextPage });
 
@@ -15,6 +23,13 @@ export default function Home(): JSX.Element {
   return (
     <main>
       <div style={{ width: '100%' }}>
+        <input
+          value={searchQuery}
+          placeholder="Search a character"
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
+        />
         <Grid>
           {isError && <p>Error!</p>}
           {isSuccess &&

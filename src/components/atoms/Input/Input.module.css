@@ -1,0 +1,25 @@
+.input {
+  position: relative;
+  width: 100%;
+}
+
+.input input {
+  outline: none;
+
+  background-color: var(--rick-and-morty-theme-slate-5xlight);
+  border-radius: 6px;
+  border: none;
+  padding: 8px 12px 8px 32px;
+  font-size: 14px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100%;
+}
+
+.input span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  left: 8px;
+  display: flex;
+}

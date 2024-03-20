@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { IoSearchOutline } from 'react-icons/io5';
 
 import { useGetAllCharactersQuery } from '@/api/endpoints/get_all_characters';
-import { Grid } from '@/components/atoms';
+import { Grid, Input } from '@/components/atoms';
 import { Card, CardSkeleton } from '@/components/molecules';
 import { useDebounce, useObserver } from '@/hooks';
 
@@ -22,13 +23,13 @@ export default function Home(): JSX.Element {
 
   return (
     <main>
-      <div style={{ width: '100%' }}>
-        <input
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: 8, width: '100%' }}>
+        <Input
+          iconJsx={<IoSearchOutline size={16} />}
           value={searchQuery}
-          placeholder="Search a character"
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search for a character"
+          handleValueReset={() => setSearchQuery('')}
         />
         <Grid>
           {isError && <p>Error!</p>}

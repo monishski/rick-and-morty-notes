@@ -1,34 +1,24 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-
-import { getAllCharacters } from '@/api/endpoints';
+import { useGetAllCharactersQuery } from '@/api/endpoints/get_all_characters';
 import { Grid } from '@/components/atoms';
 import { Card } from '@/components/molecules';
 
 export default function Home(): JSX.Element {
-  const {
-    data: characters,
-    isLoading,
-    isFetching,
-    isSuccess,
-    isError,
-  } = useQuery({
-    queryKey: ['ALL_CHARACTERS'],
-    queryFn: () => getAllCharacters(),
-    placeholderData: { info: null, results: [] },
-  });
+  const { data: characters, isFetching, isLoading, isError, isSuccess } = useGetAllCharactersQuery();
+  const skeleton = isFetching || isLoading;
 
   return (
     <main>
       <div style={{ width: '100%' }}>
         <Grid>
-          {(isFetching || isLoading) && <p>Loading...</p>}
           {isError && <p>Error!</p>}
           {isSuccess &&
-            characters?.results.map((character) => {
+            characters?.results.map((character, idx) => {
               const { id, name, image, status, gender, species, type } = character;
-              return <Card key={id} {...{ id, name, image, status, gender, species, type }} />;
+              const key = `character-card-${id}-${idx}`;
+
+              return <Card {...{ key, id, name, image, status, gender, species, type, skeleton }} />;
             })}
         </Grid>
       </div>

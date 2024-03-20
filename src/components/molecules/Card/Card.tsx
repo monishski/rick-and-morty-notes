@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,9 +12,12 @@ import { Badge } from '@/components/atoms';
 
 import styles from './Card.module.css';
 
-type CardProps = Pick<Character, 'id' | 'name' | 'image' | 'status' | 'gender' | 'species' | 'type'>;
+type CardProps = Pick<Character, 'id' | 'name' | 'image' | 'status' | 'gender' | 'species' | 'type'> & {
+  skeleton: boolean;
+};
 
-export const Card: FC<CardProps> = ({ id, name, image, status, gender, species, type }) => {
+export const Card: FC<CardProps> = ({ id, name, image, status, gender, species, type, skeleton }) => {
+  if (skeleton) return <p key={id}>Skeleton</p>; //TEMP
   return (
     <Link href={`/${id}`}>
       <div className={styles.card}>

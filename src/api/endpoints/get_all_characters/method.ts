@@ -1,6 +1,6 @@
-import { instance } from '../instance';
-import type { Character, Pagination, PaginationQuery } from '../types';
-import { getQueryString } from '../utils';
+import { instance } from '../../instance';
+import type { Character, Pagination, PaginationQuery } from '../../types';
+import { getQueryString } from '../../utils';
 
 type GetAllCharactersQuery = Partial<
   PaginationQuery & Pick<Character, 'name' | 'status' | 'species' | 'type' | 'gender'>

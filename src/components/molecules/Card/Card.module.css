@@ -1,17 +1,16 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-items: start;
-  align-items: start;
+  justify-items: flex-start;
+  align-items: flex-start;
   gap: 4px;
   padding: 8px;
   border-radius: 12px;
   background-color: var(--rick-and-morty-theme-slate-5xlight);
   overflow: hidden;
-  min-width: 200px;
-  max-width: 200px;
   flex: 1;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: 100%;
 }
 
 .card:hover {

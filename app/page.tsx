@@ -1,4 +1,5 @@
 import { getAllCharacters } from '@/api/endpoints';
+import { Grid } from '@/components/atoms';
 import { Card } from '@/components/molecules';
 
 export default async function Home(): Promise<JSX.Element> {
@@ -6,11 +7,13 @@ export default async function Home(): Promise<JSX.Element> {
 
   return (
     <main>
-      <div style={{ display: 'flex', gap: 8, flex: 'wrap', padding: 8 }}>
-        {characters?.results.map((character) => {
-          const { id, name, image, status, gender, species, type } = character;
-          return <Card key={id} {...{ id, name, image, status, gender, species, type }} />;
-        })}
+      <div style={{ width: '100%' }}>
+        <Grid>
+          {characters?.results.map((character) => {
+            const { id, name, image, status, gender, species, type } = character;
+            return <Card key={id} {...{ id, name, image, status, gender, species, type }} />;
+          })}
+        </Grid>
       </div>
     </main>
   );

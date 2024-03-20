@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 12px;
+  background-color: var(--rick-and-morty-theme-slate-5xlight);
+  overflow: hidden;
+  flex: 1;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 150ms ease-in-out;
+}
+
+.card h2 {
+  font-size: 16px;
+  max-width: 180px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 4px 0px;
+}
+
+.card ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 4px;
+}

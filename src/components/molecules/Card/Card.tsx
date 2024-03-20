@@ -20,14 +20,14 @@ export const Card: FC<CardProps> = ({ id, name, image, status, gender, species, 
           <Image src={image} alt={name} fill objectFit="cover" />
         </div>
 
-        <h2>{name}</h2>
+        <h2 title={name}>{name}</h2>
 
         <ul>
           {/* TODO: clicking on badge should select filter */}
-          <Badge iconJsx={<HiOutlineStatusOnline />} title={status} subtitle="Status" />
-          <Badge iconJsx={<FaRobot />} title={gender} subtitle="Gender" />
-          <Badge iconJsx={<RiAliensFill />} title={species} subtitle="Species" />
-          {!!type && <Badge iconJsx={<FaSkull />} title={type} subtitle="Type" />}
+          <Badge iconJsx={<HiOutlineStatusOnline size={12} />} title={status} subtitle="Status" />
+          <Badge iconJsx={<FaRobot size={12} />} title={gender} subtitle="Gender" />
+          <Badge iconJsx={<RiAliensFill size={12} />} title={species} subtitle="Species" />
+          {!!type && <Badge iconJsx={<FaSkull size={12} />} title={type} subtitle="Type" />}
         </ul>
       </div>
     </Link>

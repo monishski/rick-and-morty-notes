@@ -5,6 +5,8 @@ import { Provider } from './Provider';
 
 import './globals.css';
 
+import { AppHeader } from '@/components/molecules';
+
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
@@ -16,7 +18,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <Provider>{children}</Provider>
+        <Provider>
+          <AppHeader />
+          {children}
+        </Provider>
       </body>
     </html>
   );

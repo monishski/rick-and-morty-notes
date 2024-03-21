@@ -23,7 +23,7 @@ export default function Home(): JSX.Element {
 
   return (
     <main>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: 8, width: '100%' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: 24, width: '100%' }}>
         <Input
           iconJsx={<IoSearchOutline size={16} />}
           value={searchQuery}

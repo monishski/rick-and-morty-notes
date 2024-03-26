@@ -7,6 +7,8 @@ import { FaRobot, FaSkull } from 'react-icons/fa';
 import { HiOutlineStatusOnline } from 'react-icons/hi';
 import { RiAliensFill } from 'react-icons/ri';
 
+import { useAppSelector } from '@/store';
+import { selectNoteByCharacterId } from '@/features/notes/store/selectors';
 import type { Character } from '@/api/types';
 import { Badge } from '@/components/atoms';
 
@@ -15,15 +17,15 @@ import styles from './Card.module.css';
 type CardProps = Pick<Character, 'id' | 'name' | 'image' | 'status' | 'gender' | 'species' | 'type'>;
 
 export const Card: FC<CardProps> = ({ id, name, image, status, gender, species, type }) => {
+  const note = useAppSelector((state) => selectNoteByCharacterId(state, id));
+
   return (
     <Link href={`/${id}`}>
       <div className={styles.card}>
         <div style={{ position: 'relative', width: '100%', aspectRatio: 1, borderRadius: 8, overflow: 'hidden' }}>
           <Image src={image} alt={name} fill objectFit="cover" />
         </div>
-
         <h2 title={name}>{name}</h2>
-
         <ul>
           {/* TODO: clicking on badge should select filter */}
           <Badge iconJsx={<HiOutlineStatusOnline size={12} />} title={status} subtitle="Status" />
@@ -31,6 +33,8 @@ export const Card: FC<CardProps> = ({ id, name, image, status, gender, species, 
           <Badge iconJsx={<RiAliensFill size={12} />} title={species} subtitle="Species" />
           {!!type && <Badge iconJsx={<FaSkull size={12} />} title={type} subtitle="Type" />}
         </ul>
+        ---
+        {!!note && <p>{note.title}</p>}
       </div>
     </Link>
   );

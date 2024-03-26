@@ -9,9 +9,11 @@ import { Badge } from '@/components/atoms';
 
 import styles from './Hero.module.css';
 
-type HeroProps = Pick<Character, 'name' | 'image' | 'status' | 'gender' | 'species' | 'type'>;
+type HeroProps = Pick<Character, 'name' | 'image' | 'status' | 'gender' | 'species' | 'type'> & {
+  actionTabsJsx: JSX.Element;
+};
 
-export const Hero: FC<HeroProps> = ({ name, image, status, gender, species, type }) => {
+export const Hero: FC<HeroProps> = ({ name, image, status, gender, species, type, actionTabsJsx }) => {
   return (
     <div>
       <div style={{ position: 'relative' }}>
@@ -22,6 +24,8 @@ export const Hero: FC<HeroProps> = ({ name, image, status, gender, species, type
             <Image src={image} alt={name} fill objectFit="cover" />
           </div>
         </div>
+
+        <div className={styles.actions}>{actionTabsJsx}</div>
       </div>
 
       <div className={styles.info}>

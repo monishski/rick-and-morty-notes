@@ -18,4 +18,6 @@ export type Notes = Note[];
 
 export interface State {
   notes: Notes;
+  addNoteModalVisible: boolean;
+  addNoteModalMetadata: Pick<Note, 'characterId'>;
 }

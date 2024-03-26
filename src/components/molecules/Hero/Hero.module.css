@@ -50,3 +50,12 @@
   bottom: -24px;
   left: 24px;
 }
+
+.actions {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background-color: var(--rick-and-morty-theme-slate-5xlight);
+  padding: 6px 8px;
+  border-radius: 6px;
+}

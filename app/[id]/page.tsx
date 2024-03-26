@@ -1,5 +1,6 @@
+import { AddNoteButton } from '@/features/notes';
 import { getSingleCharacter } from '@/api/endpoints';
-import { Hero } from '@/components/molecules/Hero';
+import { Hero } from '@/components/molecules';
 
 export default async function CharacterPage({ params }: { params: { id: number } }): Promise<JSX.Element> {
   const { id } = params;
@@ -7,7 +8,7 @@ export default async function CharacterPage({ params }: { params: { id: number }
 
   return (
     <div>
-      <Hero {...character} />
+      <Hero {...character} actionTabsJsx={<AddNoteButton characterId={id} />} />
     </div>
   );
 }

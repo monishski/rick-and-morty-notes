@@ -6,6 +6,21 @@ import type { Note, Notes } from './types';
 
 export const selectNotes = (state: RootState): Notes => state.notes.notes;
 
+export const selectNotesById = createSelector([selectNotes], (notes) => {
+  return notes?.reduce(
+    (obj, note) => {
+      const { id } = note;
+      return { ...obj, [id]: note };
+    },
+    {} as Record<Note['id'], Note>
+  );
+});
+
+export const selectNoteById = createSelector(
+  [selectNotesById, (_, id: Note['id']): Note['id'] => id],
+  (notes, id) => notes?.[id]
+);
+
 export const selectNotesByCharacterId = createSelector([selectNotes], (notes) => {
   return notes?.reduce(
     (obj, note) => {

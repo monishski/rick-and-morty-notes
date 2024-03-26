@@ -6,7 +6,7 @@ import { Provider } from './Provider';
 
 import './globals.css';
 
-import { AddNoteModal } from '@/features/notes';
+import { AddNoteModal, UpdateNoteModal } from '@/features/notes';
 import { AppHeader } from '@/components/molecules';
 
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
@@ -27,6 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
 
           <AddNoteModal />
+          <UpdateNoteModal />
         </Provider>
       </body>
     </html>

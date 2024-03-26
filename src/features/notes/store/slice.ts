@@ -22,10 +22,24 @@ export const notesSlice = createSlice({
     setAddNoteModalMetadata: (state, action: PayloadAction<State['addNoteModalMetadata']>) => {
       state.addNoteModalMetadata = action.payload;
     },
+    toggleUpdateModalVisible: (state): void => {
+      state.updateNoteModalVisible = !state.updateNoteModalVisible;
+    },
+    setUpdateNoteModalMetadata: (state, action: PayloadAction<State['updateNoteModalMetadata']>) => {
+      state.updateNoteModalMetadata = action.payload;
+    },
   },
 });
 
-export const { addNotes, addNote, updateNote, deleteNote, toggleAddModalVisible, setAddNoteModalMetadata } =
-  notesSlice.actions;
+export const {
+  addNotes,
+  addNote,
+  updateNote,
+  deleteNote,
+  toggleAddModalVisible,
+  setAddNoteModalMetadata,
+  toggleUpdateModalVisible,
+  setUpdateNoteModalMetadata,
+} = notesSlice.actions;
 
 export const notesReducer = notesSlice.reducer;

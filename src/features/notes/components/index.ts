@@ -1,3 +1,3 @@
 export * from './AddNoteModal';
-export * from './AddNoteButton';
+export * from './UpdateNoteModal';
 export * from './Note';

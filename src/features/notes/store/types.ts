@@ -20,4 +20,6 @@ export interface State {
   notes: Notes;
   addNoteModalVisible: boolean;
   addNoteModalMetadata: Pick<Note, 'characterId'>;
+  updateNoteModalVisible: boolean;
+  updateNoteModalMetadata: Pick<Note, 'id'>;
 }

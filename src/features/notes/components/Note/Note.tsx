@@ -9,6 +9,7 @@ import { Spinner } from '@/components/atoms';
 import { selectNoteByCharacterId } from '../../store/selectors';
 import { AddNoteButton } from '../AddNoteButton';
 import { DeleteNoteButton } from '../DeleteNoteButton';
+import { UpdateNoteButton } from '../UpdateNoteButton';
 import styles from './Note.module.css';
 
 interface NoteProps {
@@ -30,7 +31,12 @@ export const Note: FC<NoteProps> = ({ characterId }) => {
 
         {!note && !notesLoading && <AddNoteButton {...{ characterId }} />}
 
-        {!!note && !notesLoading && <DeleteNoteButton id={note.id} />}
+        {!!note && !notesLoading && (
+          <div style={{ display: 'flex', gap: 8 }}>
+            <UpdateNoteButton id={note.id} />
+            <DeleteNoteButton id={note.id} />
+          </div>
+        )}
 
         {notesLoading && <Spinner />}
       </div>

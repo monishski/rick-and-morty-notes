@@ -1,6 +1,6 @@
 import type { FC, MouseEventHandler } from 'react';
 
-interface AddNoteFormProps {
+interface NoteFormProps {
   title: string;
   handleTitleChange: (title: string) => void;
   description: string;
@@ -8,7 +8,7 @@ interface AddNoteFormProps {
   handleSubmit: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const AddNoteForm: FC<AddNoteFormProps> = ({
+export const NoteForm: FC<NoteFormProps> = ({
   title,
   description,
   handleTitleChange,

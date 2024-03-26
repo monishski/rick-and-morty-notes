@@ -8,6 +8,7 @@ import { Spinner } from '@/components/atoms';
 
 import { selectNoteByCharacterId } from '../../store/selectors';
 import { AddNoteButton } from '../AddNoteButton';
+import { DeleteNoteButton } from '../DeleteNoteButton';
 import styles from './Note.module.css';
 
 interface NoteProps {
@@ -28,6 +29,8 @@ export const Note: FC<NoteProps> = ({ characterId }) => {
         <h2>Note</h2>
 
         {!note && !notesLoading && <AddNoteButton {...{ characterId }} />}
+
+        {!!note && !notesLoading && <DeleteNoteButton id={note.id} />}
 
         {notesLoading && <Spinner />}
       </div>

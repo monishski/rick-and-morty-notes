@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { NotebookPen } from 'lucide-react';
 
 import { useAppSelector } from '@/store';
+import { Spinner } from '@/components/atoms';
 
 import { selectNoteByCharacterId } from '../../store/selectors';
 import { AddNoteButton } from '../AddNoteButton';
@@ -16,6 +17,9 @@ interface NoteProps {
 export const Note: FC<NoteProps> = ({ characterId }) => {
   const note = useAppSelector((state) => selectNoteByCharacterId(state, characterId));
 
+  const notes = useAppSelector((state) => state.notes.notes);
+  const notesLoading = notes === null;
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -23,10 +27,12 @@ export const Note: FC<NoteProps> = ({ characterId }) => {
 
         <h2>Note</h2>
 
-        {!note && <AddNoteButton {...{ characterId }} />}
+        {!note && !notesLoading && <AddNoteButton {...{ characterId }} />}
+
+        {notesLoading && <Spinner />}
       </div>
 
-      {!note && <p style={{ fontSize: '12px' }}>No note found.</p>}
+      {!note && !notesLoading && <p style={{ fontSize: '12px' }}>No note found.</p>}
 
       {note && (
         <div className={styles.card}>

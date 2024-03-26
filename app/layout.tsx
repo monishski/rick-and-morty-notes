@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
+import { Controller } from './Controller';
 import { Provider } from './Provider';
 
 import './globals.css';
@@ -20,6 +21,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={roboto.className}>
         <Provider>
+          <Controller />
+
           <AppHeader />
           {children}
 

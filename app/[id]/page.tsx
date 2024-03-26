@@ -1,4 +1,4 @@
-import { AddNoteButton } from '@/features/notes';
+import { Note } from '@/features/notes';
 import { getSingleCharacter } from '@/api/endpoints';
 import { Hero } from '@/components/molecules';
 
@@ -7,8 +7,12 @@ export default async function CharacterPage({ params }: { params: { id: number }
   const character = await getSingleCharacter({ id });
 
   return (
-    <div>
-      <Hero {...character} actionTabsJsx={<AddNoteButton characterId={id} />} />
+    <div style={{ padding: '24px' }}>
+      <Hero {...character} />
+
+      <hr style={{ borderBottom: '0.5px solid gray', margin: '8px 0px' }} />
+
+      <Note characterId={id} />
     </div>
   );
 }

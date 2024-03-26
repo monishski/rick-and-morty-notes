@@ -32,16 +32,19 @@ export const AddNoteModal: FC = () => {
 
     dispatch(addNote(note));
 
-    dispatch(toggleAddModalVisible());
+    handleModalReset();
   };
 
-  const handleModalClose = (): void => {
+  const handleModalReset = (): void => {
     dispatch(toggleAddModalVisible());
     dispatch(setAddNoteModalMetadata(null));
+
+    setTitle('');
+    setDescription('');
   };
 
   return (
-    <Modal visible={modalVisible} handleClose={handleModalClose}>
+    <Modal visible={modalVisible} handleClose={handleModalReset}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: '250px' }}>
         <div style={{ display: 'flex', flexDirection: 'row', gap: 8, alignItems: 'center' }}>
           <NotebookPen size={20} />

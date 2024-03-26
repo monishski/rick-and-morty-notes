@@ -7,6 +7,7 @@
   background-color: var(--rick-and-morty-theme-slate-3xlight);
   border-radius: 4px;
   border: none;
+  color: inherit;
 }
 
 /* TODO: add hover effect to button */

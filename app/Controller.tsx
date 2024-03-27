@@ -14,8 +14,8 @@ export const Controller: FC = () => {
 
   useEffect(() => {
     if (notes === null) {
-      const notes = getNotesLocalStorage();
-      if (notes) dispatch(addNotes(notes ?? []));
+      const notesLocalStorage = getNotesLocalStorage();
+      dispatch(addNotes(notesLocalStorage ?? []));
     } else {
       setNotesLocalStorage(notes);
     }

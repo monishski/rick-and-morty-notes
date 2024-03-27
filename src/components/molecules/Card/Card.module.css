@@ -1,5 +1,6 @@
 .card {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-items: flex-start;
   align-items: flex-start;
@@ -11,11 +12,6 @@
   flex: 1;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   height: 100%;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  transition: transform 150ms ease-in-out;
 }
 
 .card h2 {

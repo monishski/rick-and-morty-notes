@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
+import { Controller } from './Controller';
 import { Provider } from './Provider';
 
 import './globals.css';
+
+import { AddNoteModal, UpdateNoteModal } from '@/features/notes';
+import { AppHeader } from '@/components/molecules';
 
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
@@ -16,7 +20,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <Provider>{children}</Provider>
+        <Provider>
+          <Controller />
+
+          <AppHeader />
+          {children}
+
+          <AddNoteModal />
+          <UpdateNoteModal />
+        </Provider>
       </body>
     </html>
   );
